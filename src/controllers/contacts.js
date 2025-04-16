@@ -11,8 +11,6 @@ import {
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 export const getContactsController = async (req, res) => {
   const paginationParams = parsePaginationParams(req.query);
-  // console.log(paginationParams);
-  // console.log(getContactsController);
 
   const sortParams = parseSortParams(req.query, contactSortFields);
 
@@ -26,7 +24,6 @@ export const getContactsController = async (req, res) => {
 
 export const getContactsByIdController = async (req, res) => {
   const { contactId } = req.params;
-  // console.log(contactId);
 
   const data = await getContactsById(contactId);
 
@@ -65,7 +62,6 @@ export const upsertContactsController = async (req, res) => {
 export const patchContactsController = async (req, res) => {
   const { contactId } = req.params;
   const result = await updateContact(contactId, req.body);
-  console.log(contactId);
 
   if (!result) {
     throw createHttpError(404, 'Contact not found');
